@@ -1,13 +1,14 @@
-package com.example.addressbook;
+package com.example.addressbook.controller;
 
+import com.example.addressbook.model.Contact;
+import com.example.addressbook.model.IContactDAO;
+import com.example.addressbook.model.SqliteContactDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 import java.util.List;
 
@@ -24,9 +25,11 @@ public class MainController {
     private ListView<Contact> contactsListView;
     @FXML
     private VBox contactContainer;
+
     private IContactDAO contactDAO;
+
     public MainController() {
-        contactDAO = new MockContactDAO();
+        contactDAO = new SqliteContactDao();
     }
 
     private void selectContact(Contact contact)
